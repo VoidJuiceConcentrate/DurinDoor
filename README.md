@@ -1,5 +1,5 @@
 # Print an embedded linux image with Shinobi pre-installed
-# PROJECT IS PRE-ALPHA: DO NOT USE. 
+### PROJECT IS PRE-ALPHA: DO NOT USE. 
 
 #### 2024-07-27
 

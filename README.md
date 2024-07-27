@@ -62,6 +62,10 @@ apt install dos2unix -y && dos2unix entrypoint.sh && chmod +x entrypoint.sh && d
 This project uses code from the following sources: 
 
 https://github.com/IronOxidizer/instant-pi/ (Various buildroot and boot config files used as skeletons)
+
 https://gitlab.com/Shinobi-Systems/ShinobiDocker (Used as skeleton for project)
+
 https://gitlab.com/buildroot.org/buildroot 
+
 https://gitlab.com/Shinobi-Systems/Shinobi 
+

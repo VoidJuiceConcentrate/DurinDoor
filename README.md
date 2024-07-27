@@ -1,14 +1,11 @@
-# Install Shinobi with Docker
+# Print an embedded linux image with Shinobi pre-installed
 #### 2024-05-07
 
-# Quick Install
+This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded applications. Initial building and testing done against a Raspberry Pi Zero W. 
 
-1. Run this in terminal.
-```
-bash <(curl -s https://gitlab.com/Shinobi-Systems/Shinobi-Installer/raw/master/shinobi-docker.sh)
-```
+The project sets up a build environment based on Alpine Linux in a docker image, installs necessary packages, and generates an image from within this build environment. Alpine Linux is used here for the most upstream and downstream compatibility. Alpine uses a lot of the same libraries as a quick-boot buildroot image requires, Alpine Linux docker images are available for a wide array of architectures. 
 
-# Advanced Install
+# Install
 
 1. Download this repository and enter it.
     - If you **do not have Docker** installed run `sh INSTALL/docker.sh`.
@@ -59,3 +56,12 @@ You will be asked if you want to use the included database, default is Yes. Once
 ```
 apt install dos2unix -y && dos2unix entrypoint.sh && chmod +x entrypoint.sh && dos2unix setup_and_run.sh && chmod +x setup_and_run.sh && bash setup_and_run.sh
 ```
+
+#### Credits
+
+This project uses code from the following sources: 
+
+https://github.com/IronOxidizer/instant-pi/ (Various buildroot and boot config files used as skeletons)
+https://gitlab.com/Shinobi-Systems/ShinobiDocker (Used as skeleton for project)
+https://gitlab.com/buildroot.org/buildroot 
+https://gitlab.com/Shinobi-Systems/Shinobi 

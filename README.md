@@ -1,4 +1,6 @@
 # Print an embedded linux image with Shinobi pre-installed
+# PROJECT IS PRE-ALPHA: DO NOT USE. 
+
 #### 2024-07-27
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded applications. Initial building and testing done against a Raspberry Pi Zero W. 

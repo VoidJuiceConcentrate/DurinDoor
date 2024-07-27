@@ -8,6 +8,7 @@ services:
     volumes:
       - /dev/shm/ShinobiRAM:/dev/shm/streams
       - $HOME/Shinobi:/home/Shinobi
+      - $HOME/inout:/home/inout
     ports:
       - "18444:8080"
     environment:

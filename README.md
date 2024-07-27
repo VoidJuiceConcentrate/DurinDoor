@@ -6,7 +6,7 @@
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded applications. Initial building and testing done against a Raspberry Pi Zero W. 
 
-The project sets up a build environment based on Alpine Linux in a docker image, installs necessary packages, and generates an image from within this build environment. Alpine Linux is used here for the most upstream and downstream compatibility. Alpine uses a lot of the same libraries as a quick-boot buildroot image requires, Alpine Linux docker images are available for a wide array of architectures. 
+The project sets up a build environment based on Alpine Linux in a docker image, installs necessary packages, and generates an image from within this build environment. This particular OS is used here for the most upstream and downstream compatibility as it uses a lot of the same libraries that a quick-boot buildroot (say that five times fast) image requires and the available docker images have a wide array of architectures. 
 
 # Install
 

@@ -1,0 +1,5 @@
+# From https://deb.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.35.1-1.dsc
+sha1  7ca10589647ebb737a9d2514561c917c54b9cf0d  fakeroot_1.35.1.orig.tar.gz
+sha256  6a0de53b2de05277d4e6d4a884eb0de7a8ad467b82c07a6f8f2f6a629e655fdc  fakeroot_1.35.1.orig.tar.gz
+# License files, locally calculated
+sha256  fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7  COPYING

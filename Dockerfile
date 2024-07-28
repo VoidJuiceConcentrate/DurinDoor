@@ -19,7 +19,8 @@ RUN apk add --update --update-cache \
     findutils ffmpeg mysql-client \
     py3-pip python3 npm binutils \
     build-base musl musl-dev musl-utils musl-libintl \
-    make dpkg cmake 
+    make dpkg cmake libcap \
+    gcompat
 
 RUN apk add --update --update-cache \
     glade mercurial dropbear-scp openssh-sftp-server \
@@ -47,15 +48,19 @@ RUN apk add --update --update-cache \
 
  WORKDIR /home/buildroot
  COPY buildrootConfigs/rpi0w_quickboot_shinobi_defconfig /home/buildroot/configs/rpi0w_quickboot_shinobi_defconfig
- RUN rm packages/fakeroot/fakeroot.mk
- COPY buildrootConfigs/fakeroot.mk /home/buildroot/packages/fakeroot/fakeroot.mk
+ # RUN rm packages/fakeroot/fakeroot.mk
+
  #COPY buildrootConfigs/genimage-instantpi0w.cfg /opt/buildroot/genimage-instantpi0w.cfg
 
- RUN ln -s /home/buildroot/instant-pi/instant-pi-0w/instantpi0w_defconfig /home/buildroot/configs/instantpi0w_defconfig
+ # RUN ln -s /home/buildroot/instant-pi/instant-pi-0w/instantpi0w_defconfig /home/buildroot/configs/instantpi0w_defconfig
 
  # Lets fix buildroot
+ # We're gonna bump our buildroot to Fakeroot 3.35.1, to avoid compatibility issues with musl.
 
  WORKDIR /home/buildroot/package/fakeroot
+ COPY buildrootConfigs/fakeroot.mk /home/buildroot/package/fakeroot/fakeroot.mk
+ COPY buildrootCOnfigs/fakeroot.hash /home/buildroot/package/fakeroot/fakeroot.hash
+
 
 # We need to run this first to finalize buildroot configuration
 # RUN make raspberrypi0w_defconfig && make

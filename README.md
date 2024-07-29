@@ -10,10 +10,12 @@ STAGES:
 
 - Docker Boot: ✓
 - Buildroot Make: ✓
-   - Automate buildroot make: x
+   - Automate builsdroot make: x
 - Image gen: x
     - Networking: x
-    - Shinobi:x
+    - Encryption (ssh/certs): x
+    - Shinobi: x
+    - Automation: x
 
 # Install
 

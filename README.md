@@ -6,7 +6,15 @@
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
+STAGES:
 
+Docker Boot: ✓
+Buildroot Make: ✓
+    Automate buildroot make: x
+Image gen: x
+    Networking: x
+    🪓
+    Shinobi:x
 
 # Install
 

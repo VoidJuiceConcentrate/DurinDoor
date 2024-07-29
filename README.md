@@ -8,13 +8,12 @@ This project aims to streamline building quick-boot security camera enabled embe
 
 STAGES:
 
-Docker Boot: ✓
-Buildroot Make: ✓
-    Automate buildroot make: x
-Image gen: x
-    Networking: x
-    🪓
-    Shinobi:x
+- Docker Boot: ✓
+- Buildroot Make: ✓
+   - Automate buildroot make: x
+- Image gen: x
+    - Networking: x
+    - Shinobi:x
 
 # Install
 

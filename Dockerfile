@@ -1,31 +1,29 @@
-FROM alpine:latest
+FROM node:bookworm-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
 
 ARG SHINOBI_BRANCH=master
 ARG BUILDROOT_BRANCH=2024.05
 
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories
-
-RUN apk add --update --update-cache \
-    busybox ca-certificates alpine-sdk \
-    diffutils gcc g++ busybox dpdk-acl \
-    linux-headers fakeroot fakeroot-dbg \
-    bash patch openssl wget \
-    ncurses ncurses-libs ncurses-dev \
+RUN apt-get update && apt-get install -y \
+    ca-certificates build-essential\
+    diffutils gcc g++ \
+    linux-source \
+    patch openssl wget \
+    ncurses-base ncurses-bin \
     curl git gzip bzip2 \
     perl tar cpio unzip \
-    rsync file bc\
-    bsd-compat-headers autoconf \
-    findutils ffmpeg mysql-client \
-    py3-pip python3 npm binutils \
-    build-base musl musl-dev musl-utils musl-libintl \
-    make dpkg cmake libcap \
-    gcompat
+    rsync file bc \
+    autoconf \
+    findutils ffmpeg default-mysql-client \
+    python3-pip python3 npm binutils 
+    
 
-RUN apk add --update --update-cache \
-    glade mercurial dropbear-scp openssh-sftp-server \
+RUN apt-get install -y \
+    glade mercurial openssh-sftp-server \
     subversion asciidoc w3m \
-    graphviz py3-matplotlib 
+    graphviz \
+    && rm -rf /var/lib/apt/lists/* # Cleanup
 
 
 # RUN ln -sf python3 /usr/bin/python \
@@ -34,41 +32,40 @@ RUN apk add --update --update-cache \
 #    && rm -rf /var/cache/apk/*  # Clean up to reduce image size
 
  # RUN git clone --branch $SHINOBI_BRANCH https://gitlab.com/Shinobi-Systems/Shinobi.git /opt/shinobi
- RUN git clone --branch $BUILDROOT_BRANCH https://gitlab.com/buildroot.org/buildroot.git /home/buildroot
+  RUN mkdir /home/buildroot && chown 1000:1000 /home/buildroot
+
+  USER node
+
+  RUN git clone --branch $BUILDROOT_BRANCH https://gitlab.com/buildroot.org/buildroot.git /home/buildroot
+
+
 
 #These are our custom configs, pulled from https://github.com/IronOxidizer/instant-pi/
- RUN git clone https://github.com/IronOxidizer/instant-pi.git /home/buildroot/instant-pi
-
- # WORKDIR /opt/shinobi
- # RUN npm install && npm install pm2 -g
-
- # WORKDIR /home/Shinobi
-
-
+ RUN git clone https://github.com/IronOxidizer/instant-pi.git /tmp/instant-pi
 
  WORKDIR /home/buildroot
- COPY buildrootConfigs/rpi0w_quickboot_shinobi_defconfig /home/buildroot/configs/rpi0w_quickboot_shinobi_defconfig
+ 
+ RUN mkdir /home/buildroot/board/rpi0w_quickboot
+
+ # Move over our custom defconfig. 
+ COPY buildrootConfigs/rpi0w_quickboot_defconfig /home/buildroot/configs/rpi0w_quickboot_defconfig
+ 
+ COPY buildrootConfigs/rpi0w_quickboot/* /home/buildroot/board/rpi0w_quickboot/
+ RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/rpi0w_quickboot/
+ RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/rpi0w_quickboot/
+ RUN cp /tmp/instant-pi/instant-pi-0w/genimage-instantpi0w.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
+ RUN cp /tmp/instant-pi/instant-pi-1b/linux_instantpi1b_defconfig /home/buildroot/configs/linux_instantpi0w_defconfig
  # RUN rm packages/fakeroot/fakeroot.mk
 
- #COPY buildrootConfigs/genimage-instantpi0w.cfg /opt/buildroot/genimage-instantpi0w.cfg
+# Adding user to run buildroot
 
- # RUN ln -s /home/buildroot/instant-pi/instant-pi-0w/instantpi0w_defconfig /home/buildroot/configs/instantpi0w_defconfig
-
- # Lets fix buildroot
- # We're gonna bump our buildroot to Fakeroot 3.35.1, to avoid compatibility issues with musl.
-
- WORKDIR /home/buildroot/package/fakeroot
- COPY buildrootConfigs/fakeroot.mk /home/buildroot/package/fakeroot/fakeroot.mk
- COPY buildrootCOnfigs/fakeroot.hash /home/buildroot/package/fakeroot/fakeroot.hash
-
-
-# We need to run this first to finalize buildroot configuration
-# RUN make raspberrypi0w_defconfig && make
-# RUN make rpi0w_quickboot_shinobi_config && make
-
+ # Entrypoint management
+ USER root
+ RUN rm -rf /tmp/instant-pi
  COPY entrypoint.sh /entrypoint.sh
  RUN chmod +x /entrypoint.sh
 
+ # EXTERNAL port
  EXPOSE 18444
 
 ENTRYPOINT ["/entrypoint.sh"]

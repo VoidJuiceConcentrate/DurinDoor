@@ -6,7 +6,7 @@ ARG SHINOBI_BRANCH=master
 ARG BUILDROOT_BRANCH=2024.05
 
 RUN apt-get update && apt-get install -y \
-    ca-certificates build-essential\
+    ca-certificates build-essential \
     diffutils gcc g++ \
     linux-source \
     patch openssl wget \
@@ -22,7 +22,6 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get install -y \
     glade mercurial openssh-sftp-server \
     subversion asciidoc w3m \
-    graphviz \
     && rm -rf /var/lib/apt/lists/* # Cleanup
 
 
@@ -33,11 +32,13 @@ RUN apt-get install -y \
 
  # RUN git clone --branch $SHINOBI_BRANCH https://gitlab.com/Shinobi-Systems/Shinobi.git /opt/shinobi
   RUN mkdir /home/buildroot && chown 1000:1000 /home/buildroot
+  RUN mkdir /home/buildrootOutput
 
   USER node
 
   RUN git clone --branch $BUILDROOT_BRANCH https://gitlab.com/buildroot.org/buildroot.git /home/buildroot
 
+  
 
 
 #These are our custom configs, pulled from https://github.com/IronOxidizer/instant-pi/
@@ -53,7 +54,7 @@ RUN apt-get install -y \
  COPY buildrootConfigs/rpi0w_quickboot/* /home/buildroot/board/rpi0w_quickboot/
  RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/rpi0w_quickboot/
  RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/rpi0w_quickboot/
- RUN cp /tmp/instant-pi/instant-pi-0w/genimage-instantpi0w.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
+ COPY buildrootConfigs/genimage-rpi0w_quickboot.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
  RUN cp /tmp/instant-pi/instant-pi-1b/linux_instantpi1b_defconfig /home/buildroot/configs/linux_instantpi0w_defconfig
  # RUN rm packages/fakeroot/fakeroot.mk
 

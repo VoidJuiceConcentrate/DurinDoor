@@ -7,8 +7,7 @@ services:
         SHINOBI_BRANCH: master
     volumes:
       - /dev/shm/ShinobiRAM:/dev/shm/streams
-      - $HOME/buildrootInput:/home/buildrootInput
-        $HOME/buildrootOutput:/home/buildrootOutput
+      - $HOME/buildrootOutput:/home/buildrootOutput
     ports:
       - "18444:8080"
     environment:

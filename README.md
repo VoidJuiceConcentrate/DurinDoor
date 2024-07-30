@@ -42,7 +42,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
       ```
       su -c 'make rpi0w_quickboot_defconfig' node
         ```
-   4. That part is quick. The next part is not. Put on a kettle, get your oven ready, have a coffee pot on standby.
+   4. That part is quick. The next part is not. Put on a kettle, get your favorite book ready, have a coffee pot on standby.
       ```
       su -c 'make' node
       ```

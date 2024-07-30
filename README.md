@@ -46,7 +46,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
       ```
       su -c 'make' node
       ```
-- It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do `make -j12` so it doesn't lock up my system too hard.
+- It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do `make -j12` on a 16 core system so it doesn't lock up too bad.
 
 5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
 

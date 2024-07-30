@@ -47,8 +47,8 @@ As it is right now, it's a pretty manual process. However, after completing the 
       su -c 'make' node
       ```
 - It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do `make -j12` so it doesn't lock up my system too hard.
-  
-   5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
+
+5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
 
 A folder was included for handing off files with the host (/home/buildrootOutput on the container, ~/buildrootOutput on the host). It's best to copy any files you need for installation or examination there before wiping the container for another build. 
 

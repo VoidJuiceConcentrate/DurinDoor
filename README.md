@@ -14,7 +14,7 @@ STAGES:
 - Image gen: ✓
 - Image Boot: x
      - raspicam/raspivid: x 
-    - Networking: x
+    - Networking(wireless): x
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

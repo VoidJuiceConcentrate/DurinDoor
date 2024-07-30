@@ -29,6 +29,28 @@ STAGES:
     ```
     bash setup_and_run.sh
     ```
+# Using the Printer
+
+As it is right now, it's a pretty manual process. However, after completing the previous step:
+
+   1. In a terminal window, do the following command to log into the new container
+      ```
+      docker exec {running-container-name} bash
+      ```
+   2. Ensure your current directory is /home/buildroot
+   3. Buildroot very much dislikes running as root, so anything we do needs to respect the user "node" (Default user for this docker image). Run the following to set buildroot up to compile.
+      ```
+      su -c 'make rpi0w_quickboot_defconfig' node
+     ```
+   4. That part is quick. The next part is not. Put on a kettle, get your oven ready, have a coffee pot on standby.
+      ```
+      su -c 'make' node
+      ```
+      - It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do 'make -j12' so it doesn't lock up my system too hard.
+   5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
+
+A folder was included for handing off files with the host (/home/buildrootOutput on the container, ~/buildrootOutput on the host). It's best to copy any files you need for installation or examination there before wiping the container for another build. 
+
 
 #### Credits
 

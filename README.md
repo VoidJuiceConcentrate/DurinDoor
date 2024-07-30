@@ -11,7 +11,7 @@ STAGES:
 - Docker Boot: ✓
 - Buildroot Make: ✓
    - Automate buildroot make: x
-- Image gen: x
+- Image gen: ✓
 - Image Boot: x
      - raspicam/raspivid: x 
     - Networking: x

@@ -18,6 +18,7 @@ STAGES:
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x
+    - Hibernation: x
 
 # Install
 

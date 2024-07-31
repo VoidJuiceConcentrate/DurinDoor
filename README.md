@@ -6,7 +6,13 @@
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
-STAGES:
+It also tries to stay loosely within the core direction outlined in IronOxidizer/instant-pi:
+- Buildroot for system builder
+- musl for c libraries
+- busybox / busybox init
+- f2fs on rootfs
+
+### STAGES:
 
 - Docker Boot: ✓
 - Buildroot Make: ✓
@@ -39,14 +45,21 @@ As it is right now, it's a pretty manual process. However, after completing the 
       docker exec {running-container-name} bash
       ```
    2. Ensure your current directory is /home/buildroot
+
    3. Buildroot very much dislikes running as root, so anything we do needs to respect the user "node" (Default user for this docker image). Run the following to set buildroot up to compile.
       ```
       su -c 'make linux_rpi0w_quickboot_defconfig' node
         ```
-   4. That part is quick. The next part is not. Put on a kettle, get your favorite book ready, have a coffee pot on standby.
+   4. Before building, examine the build and let buildroot fix any dependancy issues by running
+      ```
+      su -c 'make menuconfig' node
+      ```
+      
+   5. That part is quick. The next part is not. Put on a kettle, get your favorite book ready, have a coffee pot on standby.
       ```
       su -c 'make' node
       ```
+      
 - It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do `make -j12` on a 16 core system so it doesn't lock up too bad.
 
 5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.

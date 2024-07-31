@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     autoconf python3-matplotlib \
     findutils ffmpeg default-mysql-client \
     python3-pip python3 npm binutils \
-    graphviz vi
+    graphviz vim
     
 
 RUN apt-get install -y \
@@ -33,7 +33,6 @@ RUN apt-get install -y \
 
  # RUN git clone --branch $SHINOBI_BRANCH https://gitlab.com/Shinobi-Systems/Shinobi.git /opt/shinobi
   RUN mkdir /home/buildroot && chown 1000:1000 /home/buildroot
-  RUN mkdir /home/buildrootOutput
 
   USER node
 

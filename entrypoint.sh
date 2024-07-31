@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+tail -f /dev/null
 
 # TODO: reference simple web server for process automation+abstractification of build process.

@@ -2,7 +2,7 @@ FROM node:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG SHINOBI_BRANCH=master
+# ARG SHINOBI_BRANCH=master
 ARG BUILDROOT_BRANCH=2024.05
 
 RUN apt-get update && apt-get install -y \
@@ -13,10 +13,11 @@ RUN apt-get update && apt-get install -y \
     ncurses-base ncurses-bin \
     curl git gzip bzip2 \
     perl tar cpio unzip \
-    rsync file bc \
-    autoconf \
+    rsync file bc ncurses-dev \
+    autoconf python3-matplotlib \
     findutils ffmpeg default-mysql-client \
-    python3-pip python3 npm binutils 
+    python3-pip python3 npm binutils \
+    graphviz
     
 
 RUN apt-get install -y \
@@ -47,15 +48,15 @@ RUN apt-get install -y \
  WORKDIR /home/buildroot
  
  RUN mkdir /home/buildroot/board/rpi0w_quickboot
-
- # Move over our custom defconfig. 
- COPY buildrootConfigs/rpi0w_quickboot_defconfig /home/buildroot/configs/rpi0w_quickboot_defconfig
  
+ # Now some buildrooot stuff
+
  COPY buildrootConfigs/rpi0w_quickboot/* /home/buildroot/board/rpi0w_quickboot/
  RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/rpi0w_quickboot/
  RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/rpi0w_quickboot/
  COPY buildrootConfigs/genimage-rpi0w_quickboot.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
- RUN cp /tmp/instant-pi/instant-pi-1b/linux_instantpi1b_defconfig /home/buildroot/configs/linux_instantpi0w_defconfig
+ COPY buildrootConfigs/linux_rpi0w_quickboot_defconfig /home/buildroot/configs/linux_rpi0w_quickboot_defconfig
+
  # RUN rm packages/fakeroot/fakeroot.mk
 
 # Adding user to run buildroot

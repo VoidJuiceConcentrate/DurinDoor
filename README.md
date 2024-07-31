@@ -12,7 +12,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - busybox / busybox init
 - f2fs on rootfs
 
-STAGES:
+### STAGES:
 
 - Docker Boot: ✓
 - Buildroot Make: ✓

@@ -41,7 +41,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
    2. Ensure your current directory is /home/buildroot
    3. Buildroot very much dislikes running as root, so anything we do needs to respect the user "node" (Default user for this docker image). Run the following to set buildroot up to compile.
       ```
-      su -c 'make rpi0w_quickboot_defconfig' node
+      su -c 'make linux_rpi0w_quickboot_defconfig' node
         ```
    4. That part is quick. The next part is not. Put on a kettle, get your favorite book ready, have a coffee pot on standby.
       ```

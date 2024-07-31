@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     autoconf python3-matplotlib \
     findutils ffmpeg default-mysql-client \
     python3-pip python3 npm binutils \
-    graphviz
+    graphviz vi
     
 
 RUN apt-get install -y \
@@ -55,7 +55,7 @@ RUN apt-get install -y \
  RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/rpi0w_quickboot/
  RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/rpi0w_quickboot/
  COPY buildrootConfigs/genimage-rpi0w_quickboot.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
- COPY buildrootConfigs/linux_rpi0w_quickboot_defconfig /home/buildroot/configs/linux_rpi0w_quickboot_defconfig
+ COPY buildrootConfigs/linux_rpi0w_quickboot_defconfig /home/buildroot/configs/
 
  # RUN rm packages/fakeroot/fakeroot.mk
 
@@ -68,6 +68,6 @@ RUN apt-get install -y \
  RUN chmod +x /entrypoint.sh
 
  # EXTERNAL port
- EXPOSE 18444
+ # EXPOSE 18444
 
 ENTRYPOINT ["/entrypoint.sh"]

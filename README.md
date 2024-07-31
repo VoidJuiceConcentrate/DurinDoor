@@ -12,8 +12,8 @@ STAGES:
 - Buildroot Make: ✓
    - Automate buildroot make: x
 - Image gen: ✓
-- Image Boot: x
-     - raspicam/raspivid: x 
+- Image Boot: ✓
+    - raspicam/raspivid: x 
     - Networking(wireless): x
     - Encryption (ssh/certs): x
     - Shinobi: x

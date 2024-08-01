@@ -20,7 +20,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Image Boot: ✓
     - raspicam/raspivid: x 
     - Networking(wireless): ✓
-         - wpa_supplicant/wifi: x
+         - wpa_supplicant: x
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

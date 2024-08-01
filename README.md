@@ -19,8 +19,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Image gen: ✓
 - Image Boot: ✓
     - libcamera/rpi camera support: x 
-    - Networking(wireless): ✓
-         - wpa_supplicant: x
+    - Networking(wireless): x (Current focus, partially functional)
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

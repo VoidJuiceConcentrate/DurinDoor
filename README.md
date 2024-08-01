@@ -17,7 +17,16 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Image gen: ✓
 - Image Boot: ✓
     - libcamera/rpi camera support: x 
-    - Networking(wireless): x (Current focus, partially functional)
+    - Networking (Current focus, partially functional)
+        - DHCP: x
+        - DNS: x
+        - SFTP/SSHFS: x
+        - HTTP/HTTPS: x
+        - Wifi: x
+             - Assoc: ✓
+             - Auth: x
+             - AP mode: x
+        - Ifaces load
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

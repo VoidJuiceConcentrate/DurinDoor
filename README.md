@@ -26,7 +26,8 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
              - Assoc: ✓
              - Auth: x
              - AP mode: x
-        - Ifaces load
+        - Iface modules load: ✓
+        - Ifaces show in ifconfig/iwconfig: ✓
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

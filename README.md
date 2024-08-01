@@ -28,13 +28,18 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 # Install
 
 1. Download this repository and enter it.
+
     - If you **do not have Docker** installed run `sh INSTALL/docker.sh`.
-2. Review and modify the `docker-compose.yml` file.
+
+3. Review and modify the `docker-compose.yml` file. 
+
     - Leave it as-is for default setup.
-3. Run the preparation and starter script.
+
+4. Run the preparation and starter script.
     ```
     bash setup_and_run.sh
     ```
+
 # Using the Printer
 
 As it is right now, it's a pretty manual process. However, after completing the previous step:

@@ -1,8 +1,7 @@
 # Print an embedded linux image with Shinobi pre-installed
-### PROJECT IS PRE-ALPHA: DO NOT USE. 
-#### Please check back later. Will update when project generates first usable image. 
+### Currently creates an image that's bootable! 
 
-#### 2024-07-27
+#### 2024-07-31
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
@@ -29,13 +28,18 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 # Install
 
 1. Download this repository and enter it.
+
     - If you **do not have Docker** installed run `sh INSTALL/docker.sh`.
-2. Review and modify the `docker-compose.yml` file.
+
+3. Review and modify the `docker-compose.yml` file. 
+
     - Leave it as-is for default setup.
-3. Run the preparation and starter script.
+
+4. Run the preparation and starter script.
     ```
     bash setup_and_run.sh
     ```
+
 # Using the Printer
 
 As it is right now, it's a pretty manual process. However, after completing the previous step:
@@ -59,10 +63,8 @@ As it is right now, it's a pretty manual process. However, after completing the 
       ```
       su -c 'make' node
       ```
-      
-- It's worth noting here that buildroot's multithreading gating is pretty cromulent, sometimes I will do `make -j12` on a 16 core system so it doesn't lock up too bad.
 
-5. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
+   6. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
 
 A folder was included for handing off files with the host (/home/buildrootOutput on the container, ~/buildrootOutput on the host). It's best to copy any files you need for installation or examination there before wiping the container for another build. 
 

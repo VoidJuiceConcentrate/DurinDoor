@@ -1,6 +1,5 @@
 # Print an embedded linux image with Shinobi pre-installed
-### PROJECT IS PRE-ALPHA: DO NOT USE. 
-#### Please check back later. Will update when project generates first usable image. 
+### Currently creates an image that's bootable! 
 
 #### 2024-07-27
 

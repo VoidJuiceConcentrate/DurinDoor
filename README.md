@@ -1,6 +1,8 @@
 # Print an embedded linux image with Shinobi pre-installed
 ### Currently creates an image that's bootable! 
 
+Project name and focus changing soon. (still going to be the same core idea)
+
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
 It also tries to stay loosely within the core direction outlined in IronOxidizer/instant-pi:
@@ -17,7 +19,17 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Image gen: ✓
 - Image Boot: ✓
     - libcamera/rpi camera support: x 
-    - Networking(wireless): x (Current focus, partially functional)
+    - Networking (Current focus, partially functional)
+        - DHCP: x
+        - DNS: x
+        - SFTP/SSHFS: x
+        - HTTP/HTTPS: x
+        - Wifi: x
+             - Assoc: ✓
+             - Auth: x
+             - AP mode: x
+        - Iface modules load: ✓
+        - Ifaces show in ifconfig/iwconfig: ✓
     - Encryption (ssh/certs): x
     - Shinobi: x
     - Automation: x

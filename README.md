@@ -20,14 +20,14 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Image Boot: ✓
     - libcamera/rpi camera support: x 
     - Networking (Current focus, partially functional)
-        - DHCP: x
-        - DNS: x
-        - SFTP/SSHFS: x
+        - DHCP: ✓
+        - DNS: ✓
+        - SFTP/SSH: x 
         - HTTP/HTTPS: x
-        - Wifi: x
+        - Wifi: ✓
              - Assoc: ✓
-             - Auth: x
-             - AP mode: x
+             - Auth: ✓
+             - AP mode: x (Untested)
         - Iface modules load: ✓
         - Ifaces show in ifconfig/iwconfig: ✓
     - Encryption (ssh/certs): x

@@ -16,19 +16,19 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
    - Automate buildroot make: x
 - Image gen: ✓
 - Image Boot: ✓
-    - libcamera/rpi camera support: x 
-    - Networking (Current focus, partially functional)
+    - libcamera/rpi camera support: ✓ 
+    - Networking ✓
         - DHCP: ✓
         - DNS: ✓
-        - SFTP/SSH: x 
-        - HTTP/HTTPS: x
+        - SFTP/SSH: ✓
+        - HTTP/HTTPS: ✓
         - Wifi: ✓
              - Assoc: ✓
              - Auth: ✓
              - AP mode: x (Untested)
         - Iface modules load: ✓
         - Ifaces show in ifconfig/iwconfig: ✓
-    - Encryption (ssh/certs): x
+    - Encryption (ssh/certs): ✓
     - Shinobi: x
     - Automation: x
     - Hibernation: x

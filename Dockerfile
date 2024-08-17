@@ -3,7 +3,7 @@ FROM node:bookworm-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 # ARG SHINOBI_BRANCH=master
-ARG BUILDROOT_BRANCH=2024.05
+ARG BUILDROOT_BRANCH=2024.08-rc1
 
 RUN apt-get update && apt-get install -y \
     ca-certificates build-essential \

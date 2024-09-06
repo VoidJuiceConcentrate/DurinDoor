@@ -1,9 +1,10 @@
-# Print an embedded linux image with Shinobi pre-installed
+# DurinDoor is an embedded linux image with Shinobi pre-installed. 
+## About
 ### Almost feature complete, boot time is roughly 25 seconds from power-on to login prompt. 
 
 Rename incoming: DurinDoor. 
 
-This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
+DurinDoor aims to create quick-booting, high uptime security camera enabled linux images for embedded devices. This project focuses on security and stability, while leveraging embedded linux's specific benefits like quick boot times, low memory footprint, low storage footprint, and low idle power usage. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
 It also tries to stay loosely within the core direction outlined in IronOxidizer/instant-pi:
 - Buildroot for system builder
@@ -52,7 +53,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
     bash setup_and_run.sh
     ```
 
-# Using the Printer
+# Building DurinDoor from source.
 
 As it is right now, it's a pretty manual process. However, after completing the previous step:
 

@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     findutils ffmpeg default-mysql-client \
     python3-pip python3 npm binutils \
     graphviz vim
-    
+
 
 RUN apt-get install -y \
     glade mercurial openssh-sftp-server \
@@ -31,38 +31,38 @@ RUN apt-get install -y \
 #    && pip3 install --no-cache --upgrade pip setuptools \
 #    && rm -rf /var/cache/apk/*  # Clean up to reduce image size
 
- # RUN git clone --branch $SHINOBI_BRANCH https://gitlab.com/Shinobi-Systems/Shinobi.git /opt/shinobi
-  RUN mkdir /home/buildroot && chown 1000:1000 /home/buildroot
+# RUN git clone --branch $SHINOBI_BRANCH https://gitlab.com/Shinobi-Systems/Shinobi.git /opt/shinobi
+RUN mkdir /home/buildroot && chown 1000:1000 /home/buildroot
 
-  USER node
+USER node
 
-  RUN git clone --branch $BUILDROOT_BRANCH https://gitlab.com/buildroot.org/buildroot.git /home/buildroot
+RUN git clone --branch $BUILDROOT_BRANCH https://gitlab.com/buildroot.org/buildroot.git /home/buildroot
 
-  
+
 
 
 #These are our custom configs, pulled from https://github.com/IronOxidizer/instant-pi/
- RUN git clone https://github.com/IronOxidizer/instant-pi.git /tmp/instant-pi
+RUN git clone https://github.com/IronOxidizer/instant-pi.git /tmp/instant-pi
 
- WORKDIR /home/buildroot
- 
- RUN mkdir /home/buildroot/board/durindoor_rpi0w
- 
- # Now some buildrooot stuff
+WORKDIR /home/buildroot
 
- COPY buildrootConfigs/durindoor_rpi0w/* /home/buildroot/board/durindoor_rpi0w/
- RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/durindoor_rpi0w/
- RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/durindoor_rpi0w/
- COPY buildrootConfigs/genimage-durindoor_rpi0w.cfg /home/buildroot/board/durindoor_rpi0w/genimage.cfg.in
- COPY buildrootConfigs/linux_durindoor_rpi0w_defconfig /home/buildroot/configs/
+RUN mkdir /home/buildroot/board/durindoor_rpi0w
 
- # Entrypoint management
- USER root
- RUN rm -rf /tmp/instant-pi
- COPY entrypoint.sh /entrypoint.sh
- RUN chmod +x /entrypoint.sh
+# Now some buildrooot stuff
 
- # EXTERNAL port
- # EXPOSE 18444
+COPY buildrootConfigs/durindoor_rpi0w/* /home/buildroot/board/durindoor_rpi0w/
+RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/durindoor_rpi0w/
+RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/durindoor_rpi0w/
+COPY buildrootConfigs/genimage-durindoor_rpi0w.cfg /home/buildroot/board/durindoor_rpi0w/genimage.cfg.in
+COPY buildrootConfigs/linux_durindoor_rpi0w_defconfig /home/buildroot/configs/
+
+# Entrypoint management
+USER root
+RUN rm -rf /tmp/instant-pi
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# EXTERNAL port
+# EXPOSE 18444
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -6,15 +6,8 @@ services:
       args:
         SHINOBI_BRANCH: master
     volumes:
-      - /dev/shm/ShinobiRAM:/dev/shm/streams
-      - $HOME/buildrootImages:/home/buildrootImages
+      - $HOME/buildrootFiles:/home/buildrootFiles
     ports:
       - "18444:8080"
     environment:
-      - HOME=/home/Shinobi
-      - DB_HOST=shinobi-sql
-      - DB_USER=majesticflame
-      - DB_PASSWORD=1234
-      - DB_DATABASE=ccio
-      - SHINOBI_UPDATE=false
     restart: unless-stopped

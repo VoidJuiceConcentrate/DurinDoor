@@ -64,7 +64,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
 
    3. Buildroot very much dislikes running as root, so anything we do needs to respect the user "node" (Default user for this docker image). Run the following to set buildroot up to compile.
       ```
-      su -c 'make linux_rpi0w_quickboot_defconfig' node
+      su -c 'make linux_durindoor_rpi0w_defconfig' node
         ```
    4. Before building, examine the build and let buildroot fix any dependancy issues by running
       ```
@@ -78,7 +78,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
 
    6. This should spit out an image at /home/buildroot/output/image/sdcard.img. Plug that into your balena etcher, raspberry pi imager, `dd if= of=` if you're old school.
 
-A folder was included for handing off files with the host (/home/buildrootOutput on the container, ~/buildrootOutput on the host). It's best to copy any files you need for installation or examination there before wiping the container for another build. 
+A folder was included for handing off files with the host (/home/buildrootFiles on the container, ~/buildrootFiles on the host). It's best to copy any files you need for installation or examination there before wiping the container for another build. 
 
 
 #### Credits
@@ -87,7 +87,7 @@ This project uses code from the following sources:
 
 https://github.com/IronOxidizer/instant-pi/ (Various buildroot and boot config files used as skeletons)
 
-https://gitlab.com/Shinobi-Systems/ShinobiDocker (Used as skeleton for project)
+https://gitlab.com/Shinobi-Systems/ShinobiDocker 
 
 https://gitlab.com/buildroot.org/buildroot 
 

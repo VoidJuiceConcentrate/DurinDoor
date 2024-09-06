@@ -1,5 +1,7 @@
 # Print an embedded linux image with Shinobi pre-installed
-### Currently creates an image that's bootable! 
+### Almost feature complete, boot time is roughly 25 seconds from power-on to login prompt. 
+
+Rename incoming: DurinDoor. 
 
 This project aims to streamline building quick-boot security camera enabled embedded linux images for embedded devices. Initial building done on amd64 and arm64, testing done against a Raspberry Pi Zero W. 
 
@@ -15,20 +17,22 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Buildroot Make: ✓
    - Automate buildroot make: x
 - Image gen: ✓
+   - Image Compression: x
+   - Image encryption: x
 - Image Boot: ✓
-    - libcamera/rpi camera support: x 
-    - Networking (Current focus, partially functional)
+    - libcamera/rpi camera support: ✓ 
+    - Networking ✓
         - DHCP: ✓
         - DNS: ✓
-        - SFTP/SSH: x 
-        - HTTP/HTTPS: x
+        - SFTP/SSH: ✓
+        - HTTP/HTTPS: ✓
         - Wifi: ✓
              - Assoc: ✓
              - Auth: ✓
              - AP mode: x (Untested)
         - Iface modules load: ✓
         - Ifaces show in ifconfig/iwconfig: ✓
-    - Encryption (ssh/certs): x
+    - Encryption (ssh/certs): ✓
     - Shinobi: x
     - Automation: x
     - Hibernation: x

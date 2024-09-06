@@ -55,7 +55,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 
 # Building DurinDoor from source.
 
-As it is right now, it's a pretty manual process. However, after completing the previous step:
+As it is right now, it's a pretty manual process. However, with Docker installed:
 
    1. In a terminal window, do the following command to log into the new container
       ```

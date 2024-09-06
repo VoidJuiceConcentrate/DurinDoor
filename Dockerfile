@@ -46,19 +46,15 @@ RUN apt-get install -y \
 
  WORKDIR /home/buildroot
  
- RUN mkdir /home/buildroot/board/rpi0w_quickboot
+ RUN mkdir /home/buildroot/board/durindoor_rpi0w
  
  # Now some buildrooot stuff
 
- COPY buildrootConfigs/rpi0w_quickboot/* /home/buildroot/board/rpi0w_quickboot/
- RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/rpi0w_quickboot/
- RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/rpi0w_quickboot/
- COPY buildrootConfigs/genimage-rpi0w_quickboot.cfg /home/buildroot/board/rpi0w_quickboot/genimage.cfg.in
- COPY buildrootConfigs/linux_rpi0w_quickboot_defconfig /home/buildroot/configs/
-
- # RUN rm packages/fakeroot/fakeroot.mk
-
-# Adding user to run buildroot
+ COPY buildrootConfigs/durindoor_rpi0w/* /home/buildroot/board/durindoor_rpi0w/
+ RUN cp /tmp/instant-pi/instant-pi-0w/cmdline.txt /home/buildroot/board/durindoor_rpi0w/
+ RUN cp /tmp/instant-pi/instant-pi-0w/config.txt /home/buildroot/board/durindoor_rpi0w/
+ COPY buildrootConfigs/genimage-durindoor_rpi0w.cfg /home/buildroot/board/durindoor_rpi0w/genimage.cfg.in
+ COPY buildrootConfigs/linux_durindoor_rpi0w_defconfig /home/buildroot/configs/
 
  # Entrypoint management
  USER root

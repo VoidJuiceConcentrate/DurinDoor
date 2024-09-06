@@ -17,6 +17,8 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
 - Buildroot Make: ✓
    - Automate buildroot make: x
 - Image gen: ✓
+   - Image Compression: x
+   - Image encryption: x
 - Image Boot: ✓
     - libcamera/rpi camera support: ✓ 
     - Networking ✓

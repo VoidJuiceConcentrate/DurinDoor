@@ -1,4 +1,5 @@
-# Print an embedded linux image with Shinobi pre-installed
+# DurinDoor is an embedded linux image with Shinobi pre-installed. 
+## About
 ### Almost feature complete, boot time is roughly 25 seconds from power-on to login prompt. 
 
 Rename incoming: DurinDoor. 
@@ -52,7 +53,7 @@ It also tries to stay loosely within the core direction outlined in IronOxidizer
     bash setup_and_run.sh
     ```
 
-# Using the Printer
+# Building DurinDoor from source.
 
 As it is right now, it's a pretty manual process. However, after completing the previous step:
 

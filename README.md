@@ -59,7 +59,7 @@ As it is right now, it's a pretty manual process. However, after completing the 
 
    1. In a terminal window, do the following command to log into the new container
       ```
-      docker exec {running-container-name} bash
+      docker exec -it {running-container-name} bash
       ```
    2. Ensure your current directory is /home/buildroot
 
